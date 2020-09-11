@@ -5,7 +5,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
-import { getUserName } from './reducer';
 
 function Header() {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -39,7 +38,7 @@ function Header() {
                         onClick={handleAuthentication}
                         className="header_option">
                         <span className="header_optionLineOne">
-                            Hello {user?.email}
+                            Hello {!user ? 'Guest' : user?.email}
                         </span>
                         <span className="header_optionLineTwo">
                             {user ? 'Sign Out' : 'Sign In'}
